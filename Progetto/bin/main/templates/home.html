@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-commerce</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        M.AutoInit();
+    });
+</script>
+
+<style>
+    /* Aggiunta di uno stile personalizzato */
+    .hero-image {
+        background-image: url('https://static.ohga.it/wp-content/uploads/sites/24/2020/11/Cesto-di-Natale-1536x1024.jpg'); /* Sostituisci con l'URL dell'immagine */
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .hero-text p {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+</style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-wrapper indigo darken-1">
+            <a href="#" class="brand-logo">E-commerce</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/store">Mostra prodotti</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Sidebar per mobile -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        <li><a href="/store">Mostra prodotti</a></li>
+    </ul>
+    
+    <!-- Sezione Hero con immagine -->
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1>Benvenuti nel nostro e-commerce!</h1>
+            <p>Trova i migliori prodotti culinari ai migliori prezzi.</p>
+        </div>
+    </div>
+
+    <!-- Sezione principale -->
+    <div id="home" class="section scrollspy">
+        <div class="container">
+            <h3>Esplora la nostra selezione di prodotti</h3>
+            <p>Un'ampia scelta di prodotti freschi, preparati con cura e attenzione alla qualità.</p>
+        </div>
+    </div>
+
+</body>
+</html>

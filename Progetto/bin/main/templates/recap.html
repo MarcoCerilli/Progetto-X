@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <title>Recap</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f7f7f7;
+        }
+        
+        h1, h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0288d1;
+            color: #fff;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+            cursor: pointer;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: right;
+        }
+
+        .nav-wrapper {
+            padding: 0 15px;
+        }
+
+        .brand-logo {
+            font-size: 1.8em;
+        }
+
+        .sidenav-trigger {
+            font-size: 1.5em;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-wrapper indigo darken-1">
+            <a href="#" class="brand-logo">E-commerce</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/store">Mostra prodotti</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Sidenav for Mobile -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        <li><a href="/store">Mostra prodotti</a></li>
+    </ul>
+
+   
+
+   
+    <h3>Prodotti Acquistati</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Prezzo Unitario (€)</th>
+                <th>Quantità</th>
+                <th>Totale (€)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cesto : ${lista}">
+                <td th:text="${cesto.nome}"></td>
+                <td th:text="${cesto.marca}"></td>
+                <td th:text="${cesto.prezzo}"></td>
+                <td th:text="${cesto.quantita}"></td>
+                <td th:text="${cesto.prezzo * cesto.quantita}"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="total">Totale Prodotti:</td>
+                <td th:text="${somma}"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- Cestini Table -->
+    <h3>Cestini Acquistati</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Prezzo Unitario (€)</th>
+                <th>Quantità</th>
+                <th>Totale (€)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cesto : ${lista1}">
+                <td th:text="${cesto.nome}"></td>
+                <td th:text="${cesto.prezzo}"></td>
+                <td th:text="${cesto.quantita}"></td>
+                <td th:text="${cesto.prezzo * cesto.quantita}"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="total">Totale Cestini:</td>
+                <td th:text="${somma1}"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>

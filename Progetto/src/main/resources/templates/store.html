@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - E-commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #0288d1;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 120px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .table-container {
+            margin-bottom: 40px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #0288d1;
+            color: white;
+        }
+
+        td {
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        input[type="number"] {
+            width: 70px;
+            padding: 5px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .btn {
+            margin-top: 20px;
+            background-color: #0288d1;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #0277bd;
+        }
+
+        .center-align {
+            text-align: center;
+        }
+
+        .sidenav-trigger {
+            font-size: 1.5em;
+        }
+
+        .nav-wrapper {
+            padding: 0 15px;
+        }
+
+        @media screen and (max-width: 600px) {
+            h3 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <div class="nav-wrapper indigo darken-1">
+        <a href="#" class="brand-logo">E-commerce</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li><a href="/store">Prodotti</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidenav for Mobile -->
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="/">Home</a></li>
+    <li><a href="/store">Prodotti</a></li>
+</ul>
+
+<div class="container">
+    <!-- Prodotti Section -->
+    <div class="table-container">
+        <h3 class="center-align">Prodotti Disponibili</h3>
+        <form action="/buyProducts" method="post">
+            <table class="highlight centered responsive-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Marca</th>
+                        <th>Prezzo (€)</th>
+                        <th>Luogo</th>
+                        <th>Immagine</th>
+                        <th>Quantità</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cesto : ${listaC}">
+                        <td th:text="${cesto.nome}"></td>
+                        <td th:text="${cesto.marca}"></td>
+                        <td>€<span th:text="${cesto.prezzo}"></span></td>
+                        <td th:text="${cesto.luogo}"></td>
+                        <td><img th:src="${cesto.url}" alt="Immagine prodotto"></td>
+                        <td><input type="number" name="selected" value="0" min="0"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="center-align">
+                <button class="btn waves-effect waves-light" type="submit">Acquista Prodotti</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Cestini Section -->
+    <div class="table-container">
+        <h3 class="center-align">Cestini Disponibili</h3>
+        <form action="/buyBaskets" method="post">
+            <table class="highlight centered responsive-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Prezzo (€)</th>
+                        <th>Quantità</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cesto : ${listaD}">
+                        <td th:text="${cesto.nome}"></td>
+                        <td>€<span th:text="${cesto.prezzo}"></span></td>
+                        <td><input type="number" name="selected" value="0" min="0"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="center-align">
+                <button class="btn waves-effect waves-light" type="submit">Acquista Cestini</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
